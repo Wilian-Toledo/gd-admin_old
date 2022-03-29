@@ -1,0 +1,77 @@
+/* mobile hidden */
+/* class ="d-sm-block d-none" */
+
+
+/* table's readjustment for mobile */
+@media only screen and (max-width: 800px) {
+    .table-to-mobile {
+        width: 100%;
+        border: 0px;
+    }
+
+        .table-to-mobile thead {
+            position: absolute;
+            z-index: 0;
+            visibility: hidden;
+        }
+
+        .table-to-mobile tbody {
+            display: flex;
+            flex-flow: row wrap;
+        }
+
+        .table-to-mobile tr {
+            box-sizing: border-box;
+            display: block;
+            background-color: #FFF;
+            border: 1px solid #CCC;
+            margin: 10px;
+        }
+
+        .table-to-mobile td {
+            display: flex;
+            flex-flow: row wrap;
+            justify-content: space-between;
+            padding: 15px;
+            font-size: 12px;
+            width: 100%;
+        }
+
+            .table-to-mobile td:before {
+                content: attr(data-title);
+                padding-right: 15px;
+                white-space: nowrap;
+                text-align: left;
+                font-weight: bold;
+            }
+}
+
+@media only screen and (max-width: 400px) {
+    .table-to-mobile tr {
+        width: calc(100%);
+    }
+}
+
+
+@media screen and (min-width: 401px) and (max-width: 600px) {
+    .table-to-mobile tr {
+        width: calc(100% / 2 - 20px);
+    }
+}
+
+@media only screen and (min-width: 601px) {
+    .table-to-mobile tr {
+        width: calc(100% / 3 - 20px);
+    }
+}
+
+/* overriding modal */
+.modal {
+	overflow: auto;
+}
+
+@media only screen and (min-width: 768px) {
+	.modal-dialog {
+		width: 699px;
+	}
+}

@@ -1,0 +1,65 @@
+<div *ngIf="is_load">
+    <section class="content-header">
+        <h1>
+            Detalhes do ramal
+        </h1>
+        <nav aria-label="breadcrumb">
+            <ol class="breadcrumb">
+              <li class="breadcrumb-item"><a routerLink="/home">Home</a></li>
+              <li class="breadcrumb-item"><a routerLink="/extension">Ramal</a></li>
+              <li class="breadcrumb-item active" aria-current="page">Detalhes</li>
+            </ol>
+          </nav>
+    </section>
+    <section class="content">
+        <div class="container-fluid">
+            <nav>
+                <div class="nav nav-tabs" id="nav-tab" role="tablist">
+                  <a class="nav-item nav-link active" id="nav-home-tab" data-toggle="tab" href="#nav-home" role="tab" aria-controls="nav-home" aria-selected="true">Ramal</a>
+                </div>
+              </nav>
+              <form #f="ngForm" (ngSubmit)="save()">
+                <div class="tab-content" id="nav-tabContent">
+                    <div class="tab-pane fade show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="card card-primary">
+                                    <div class="card-body">
+                                        <div class="row">
+                                            <div class="col">
+                                                <label>Nome: </label>
+                                                <input type="search"  class="form-control" [(ngModel)]="extension.name" width="100px" required name="name" />
+                                            </div>
+                                            <div class="col">
+                                                <label>Referencia da empresa: </label>
+                                                <input type="text"  class="form-control" [(ngModel)]="extension.company_reference" width="100px" readonly required name="company_reference" />
+                                            </div>
+                                            <div class="col">
+                                                <label>Ramal: </label>
+                                                <input type="search"  class="form-control" [(ngModel)]="extension.reference" width="100px" required name="reference" />
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col">
+                                                <label>Caller ID: </label>
+                                                <input type="search" class="form-control" [(ngModel)]="extension.caller_id" width="100px" required name="caller_id" />
+                                            </div>
+                                            <div class="col">
+                                                <label>Tech: </label>
+                                                <input type="search" class="form-control" [(ngModel)]="extension.tech" width="100px" required name="tech" />
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-footer">
+                        <button type="submit" class="btn btn-primary m-r-15">Salvar</button>
+                        <button type="button" (click)="delete()" class="btn btn-danger  m-r-15">Excluir</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </section>
+</div>

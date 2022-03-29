@@ -1,0 +1,81 @@
+<div>
+    <section class="content-header">
+        <h1>
+            Pesquisar Caixa Postal
+        </h1>
+        <nav aria-label="breadcrumb">
+            <ol class="breadcrumb">
+              <li class="breadcrumb-item"><a routerLink="/home">Home</a></li>
+              <li class="breadcrumb-item active" aria-current="page">Caixa Postal</li>
+            </ol>
+          </nav>
+    </section>
+    <section class="content">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-12 col-md-12">
+                    <div class="card card-primary">
+                        <div class="card-footer">
+                            <a [routerLink]="['/mailboxes/create']" class="btn btn-primary m-t-23">
+                                <span class="fas fa-plus nav-icon"></span>
+                                <span class="hidden-xs"> Novo</span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="card card-primary">
+                        <div class="row" *ngIf="mailboxes?.length > 0">
+                            <div class="col-12">
+                                <div class="card">
+                                    <div class="card-header">
+                                        <h3 class="card-title">Caixas Postais encontradas</h3>
+                                    </div>
+                                    <div class="card-body table-responsive p-0">
+                                      <table class="table table-hover table-to-mobile">
+                                        <thead>
+                                          <tr>
+                                            <th>ID</th>
+                                            <th>Nome</th>
+                                            <th>Ramal/SIP</th>
+                                            <th>Mailbox ID</th>
+                                            <th>Ações</th>
+                                          </tr>
+                                        </thead>
+                                        <tbody>
+                                          <tr *ngFor="let item of mailboxes">
+                                            <td>{{ item.id }}</td>
+                                            <td><span class="text-green">{{ item.name }}</span></td>
+                                            <td><span class="text-info">{{ item.extension }}</span></td>
+                                            <td><span class="text-info">{{ item.mailboxes_id }}</span></td>
+                                            <td>
+                                                <a [routerLink]="['/mailboxes', item.id]"><i class="fas fa-eye"></i></a>
+                                                <i></i>
+                                                <i></i>
+                                            </td>
+                                          </tr>
+                                        </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row" *ngIf="mailboxes?.length == 0">
+                            <div class="col-sm-12">
+                                <p class="text-center">
+                                    Caixa Postal encontrada.
+                                    <br>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</div>
+

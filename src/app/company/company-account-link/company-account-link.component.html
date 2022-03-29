@@ -1,0 +1,122 @@
+<div>
+    <section class="content-header">
+        <h1>
+            Vincular funcionário com a empresa
+        </h1>
+        <nav aria-label="breadcrumb">
+            <ol class="breadcrumb">
+              <li class="breadcrumb-item"><a routerLink="/home">Home</a></li>
+              <li class="breadcrumb-item active" aria-current="page">Vinculo</li>
+            </ol>
+          </nav>
+    </section>
+    <section class="content">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="card card-primary">
+                        <form #f="ngForm" (ngSubmit)="save()">
+                            <div class="card-body">
+                                <div class="form-row form-group col-md-12">
+                                    <div class="col">
+                                        <label>Funcionário*</label>
+                                        <div class="ng-autocomplete"></div>
+                                        <ng-autocomplete 
+                                            [searchKeyword]="keyword"
+                                            [data]="accountsEmployee"
+                                            (selected)='setAccount($event)'
+                                            (inputChanged)='getAccount($event)'
+                                            [itemTemplate]="accountTemplate" >
+                                        </ng-autocomplete>
+                                    </div>
+                                </div>
+                            </div>
+            
+                            <div class="card-footer">
+                                <button type="submit" class="btn btn-primary">Salvar</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="card card-primary">
+                        <div class="row" *ngIf="employeesList.length > 0">
+                            <div class="col-12">
+                                <div class="card">
+                                    <div class="card-header">
+                                        <h3 class="card-title">Funcionários encontrados</h3>
+                                    </div>
+                                    <div class="card-body table-responsive p-0">
+                                      <table class="table table-hover table-to-mobile">
+                                        <thead>
+                                          <tr>
+                                            <th>ID</th>
+                                            <th>Nome</th>
+                                            <th>Documento</th>
+                                            <th>Telefone</th>
+                                            <th>Ações</th>
+                                          </tr>
+                                        </thead>
+                                        <tbody>
+                                          <tr *ngFor="let item of employeesList">
+                                            <td>{{ item.id }}</td>
+                                            <td><span class="text-green">{{ item.name }}</span></td>
+                                            <td><span class="text-info">{{ item.document || '---' | document }}</span></td>
+                                            <td><span class="text-info">{{ item.phone || '---' | phone }}</span></td>
+                                            <td>
+                                                <a href="javascript:;"
+                                                    [swal]="{
+                                                        title: 'Deseja realmente excluir o vínculo da loja com o usuário?',
+                                                        icon: 'question',
+                                                        showCancelButton: 'true'
+                                                    }"
+                                                    (confirm)="delete(item.id)"
+                                                ><i class="fas fa-trash-alt"></i></a>
+                                                <i></i>
+                                                <i></i>
+                                            </td>
+                                          </tr>
+                                        </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row" *ngIf="employeesList.length == 0">
+                            <div class="col-sm-12">
+                                <p class="text-center">
+                                    Nenhum vinculo encontrado.
+                                    <br>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</div>
+
+<ng-template #accountTemplate let-item>
+    <a href="javascript:void(0)">
+        <div class="row">
+            <div class="col-10">
+                <span [innerHTML]="item.name"></span> - <i>{{ item.login }}</i>
+            </div>
+        </div>
+    </a>
+</ng-template>
+
+<ng-template #companyTemplate let-item>
+    <a href="javascript:void(0)">
+        <div class="row">
+            <div class="col-10">
+                <span [innerHTML]="item.name"></span> - <i>{{ item.document || '---' | document }}</i>
+            </div>
+        </div>
+    </a>
+</ng-template>

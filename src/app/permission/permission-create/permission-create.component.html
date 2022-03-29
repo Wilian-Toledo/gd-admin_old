@@ -1,0 +1,102 @@
+<div>
+    <section class="content-header">
+        <h1>
+            Criação e alteração de permissão
+        </h1>
+        <nav aria-label="breadcrumb">
+            <ol class="breadcrumb">
+              <li class="breadcrumb-item"><a routerLink="/home">Home</a></li>
+              <li class="breadcrumb-item"><a routerLink="/permission">Permissão</a></li>
+            </ol>
+          </nav>
+    </section>
+    <section class="content">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="card card-primary">
+                        <form #f="ngForm" (ngSubmit)="save()">
+                            <div class="card-body">
+                                <div class="form-row form-group">
+                                    <div class="col">
+                                        <label>Funcionário*</label>
+                                        <div class="ng-autocomplete"></div>
+                                        <ng-autocomplete 
+                                            [searchKeyword]="keyword"
+                                            [data]="accountsEmployee.employees"
+                                            (selected)='setAccount($event)'
+                                            (inputChanged)='getAccount()'
+                                            [itemTemplate]="accountTemplate" >
+                                        </ng-autocomplete>
+                                    </div>
+                                </div>
+
+                                <div class="modal-body">
+                                    <div class="box-body">
+                                        <div class="row">
+                                            <div class="col-lg-12">
+                                                <label>Operações disponíveis:</label>
+                                            </div>
+                                        </div>
+                                        <div class="row" *ngFor="let item of resources; let i = index">
+                                            <div class="col-lg-2">
+                                                <label>
+                                                    {{ item.name }}
+                                                </label>
+                                            </div>
+                                            <div class="col-lg-2">
+                                                <label>
+                                                    <input name="view_{{i}}" [(ngModel)]="item.operations.view" type="checkbox" class="ng-untouched ng-pristine ng-valid" />
+                                                        Visualizar
+                                                </label>
+                                            </div>
+                                            <div class="col-lg-2">
+                                                <label>
+                                                    <input name="insert_{{i}}" [(ngModel)]="item.operations.insert" type="checkbox" class="ng-untouched ng-pristine ng-valid" />
+                                                        Inserir
+                                                </label>
+                                            </div>
+                                            <div class="col-lg-2">
+                                                <label>
+                                                    <input name="edit_{{i}}" [(ngModel)]="item.operations.edit" type="checkbox" class="ng-untouched ng-pristine ng-valid" />
+                                                        Editar
+                                                </label>
+                                            </div>
+                                            <div class="col-lg-2">
+                                                <label>
+                                                    <input name="remove_{{i}}" [(ngModel)]="item.operations.remove" type="checkbox" class="ng-untouched ng-pristine ng-valid" />
+                                                        Excluir
+                                                </label>
+                                            </div>
+                                            <div class="col-lg-2">
+                                                <label>
+                                                    <input name="all_{{i}}" [(ngModel)]="item.operations.all" type="checkbox" class="ng-untouched ng-pristine ng-valid" />
+                                                    Tudo
+                                                </label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+        
+                            <div class="card-footer">
+                                <button type="submit" class="btn btn-primary">Salvar</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </section>
+</div>
+
+<ng-template #accountTemplate let-item>
+    <a href="javascript:void(0)">
+        <div class="row">
+            <div class="col-10">
+                <span [innerHTML]="item.name"></span> - <i>{{ item.login }}</i>
+            </div>
+        </div>
+    </a>
+</ng-template>

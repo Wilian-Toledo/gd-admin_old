@@ -1,0 +1,31 @@
+<div *ngIf="isloging">
+  <div class="wrapper">
+    <ng-progress></ng-progress>
+
+    <app-master-header></app-master-header>
+
+    <app-master-menu></app-master-menu>
+
+    <div class="content-wrapper">
+      <router-outlet></router-outlet>
+    </div>
+
+    <aside class="control-sidebar control-sidebar-dark">
+      <div class="p-3 control-sidebar-content">
+        <h5>Admin</h5>
+        <hr class="mb-2"/>
+        <!-- Control sidebar content goes here -->
+      </div>
+    </aside>
+
+    <app-master-footer></app-master-footer>
+
+    <div class="control-sidebar-bg"></div>
+  </div>
+</div>
+
+<div *ngIf="!isloging">
+  <div class="wrapper">
+    <router-outlet></router-outlet>
+  </div>
+</div>

@@ -1,0 +1,120 @@
+<div>
+    <section class="content-header">
+        <h1>
+            Pesquisar empresa
+        </h1>
+        <nav aria-label="breadcrumb">
+            <ol class="breadcrumb">
+              <li class="breadcrumb-item"><a routerLink="/home">Home</a></li>
+              <li class="breadcrumb-item active" aria-current="page">Empresa</li>
+            </ol>
+          </nav>
+    </section>
+    <section class="content">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-12 col-md-12">
+                    <div class="card card-primary">
+                        <form #f="ngForm" (ngSubmit)="search(filter)">
+                            <div class="card-body">
+                                <div class="row">
+                                    <div class="col-6">
+                                        <label>Código</label>
+                                        <input type="search" class="form-control" [(ngModel)]="filter.id" required name="id">
+                                    </div>
+                                    <div class="col-6">
+                                        <label>Nome</label>
+                                        <input type="search" class="form-control" placeholder="Nome completo" [(ngModel)]="filter.name" required name="name">
+                                    </div>
+                                    <div class="col-6">
+                                        <label>Documento</label>
+                                        <input type="search" class="form-control" placeholder="Documento" [(ngModel)]="filter.document" required name="document">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="card-footer">
+                                <button type="submit" class="btn btn-primary m-t-23 m-r-5">
+                                    <span class="fas fa-search nav-icon"></span>
+                                    <span class="hidden-xs"> Filtrar</span>
+                                </button>
+                                <a [routerLink]="['/company/create']" class="btn btn-primary m-t-23">
+                                    <span class="fas fa-plus nav-icon"></span>
+                                    <span class="hidden-xs"> Novo</span>
+                                </a>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="card card-primary">
+                        <div class="row" *ngIf="company?.items.length > 0">
+                            <div class="col-12">
+                                <div class="card">
+                                    <div class="card-header">
+                                        <h3 class="card-title">Empresas encontradas</h3>
+                                    </div>
+                                    <div class="card-body table-responsive p-0">
+                                      <table class="table table-hover table-to-mobile">
+                                        <thead>
+                                          <tr>
+                                            <th>ID</th>
+                                            <th>Nome</th>
+                                            <th>Documento</th>
+                                            <th>Descrição</th>
+                                            <th>Ações</th>
+                                          </tr>
+                                        </thead>
+                                        <tbody>
+                                          <tr *ngFor="let item of company?.items | paginate: { itemsPerPage: pagination.take, currentPage: pagination.page, totalItems: company?.total_items }">
+                                            <td>{{ item.id }}</td>
+                                            <td><span class="text-green">{{ item.name }}</span></td>
+                                            <td><span class="text-info">{{ item.document || '---' | document }}</span></td>
+                                            <td><span class="text-info">{{ item.description }}</span></td>
+                                            <td>
+                                                <span class="m-r-5">
+                                                    <a [routerLink]="['/company', item.id]"><i class="fas fa-eye"></i></a>
+                                                </span>
+                                                <span>
+                                                    <a href="javascript:;" 
+                                                        [swal]="{
+                                                            title: 'Deseja realmente excluir o empresa?',
+                                                            icon: 'question',
+                                                            showCancelButton: 'true'
+                                                        }"
+                                                        (confirm)="delete(item.id)"
+                                                    ><i class="fas fa-trash-alt"></i></a>
+                                                </span>
+                                                <i></i>
+                                            </td>
+                                          </tr>
+                                        </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row col-lg-12 col-md-12">
+                                <pagination-controls (pageChange)="getPage($event)"
+                                    previousLabel="Anterior"
+                                     nextLabel="Próxima"
+                                     autoHide="company?.total_items > 10">
+                                </pagination-controls>
+                            </div>
+                        </div>
+                        <div class="row" *ngIf="company?.items.length == 0">
+                            <div class="col-sm-12">
+                                <p class="text-center">
+                                    Nenhum empresa encontrado.
+                                    <br>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</div>

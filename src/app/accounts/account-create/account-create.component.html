@@ -1,0 +1,87 @@
+<div>
+    <section class="content-header">
+        <h1>
+            Criação e alteração de funcionário
+        </h1>
+        <nav aria-label="breadcrumb">
+            <ol class="breadcrumb">
+              <li class="breadcrumb-item"><a routerLink="/home">Home</a></li>
+              <li class="breadcrumb-item"><a routerLink="/accounts">Funcionário</a></li>
+            </ol>
+          </nav>
+    </section>
+    <section class="content">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="card card-primary">
+                        <form #f="ngForm" (ngSubmit)="save()">
+                            <div class="card-body">
+                                <div class="form-row form-group">
+                                    <div class="col">
+                                        <label>Nome*</label>
+                                        <input type="text" class="form-control" placeholder="Nome completo" [(ngModel)]="account.name" required name="name">
+                                    </div>
+                                </div>
+                                <div class="form-row form-group d-none">
+                                    <div class="col">
+                                        <label>Documento</label>
+                                        <input type="text" class="form-control" placeholder="Documento CPF ou CNPJ" [(ngModel)]="account.document" name="document">
+                                    </div>
+                                    <div class="col">
+                                        <label>Celular</label>
+                                         <div class="input-group mb-2 mr-sm-2">
+                                            <div class="input-group-prepend">
+                                                <div class="input-group-text"><i class="fas fa-phone"></i></div>
+                                            </div>
+                                            <input type="text" mask="(00)00000-0000" [showMaskTyped]="true" class="form-control" placeholder="Celular" [(ngModel)]="account.phone" name="phone">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-row form-group">
+                                    <div class="col">
+                                        <label>E-mail*</label>
+                                        <div class="input-group mb-2 mr-sm-2">
+                                            <div class="input-group-prepend">
+                                                <div class="input-group-text">@</div>
+                                            </div>
+                                            <input type="email" class="form-control" placeholder="E-mail" [(ngModel)]="account.email" name="email" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-row form-group">
+                                    <div class="col">
+                                        <label>Login*</label>
+                                        <div class="input-group mb-2 mr-sm-2">
+                                            <div class="input-group-prepend">
+                                                <div class="input-group-text">@</div>
+                                            </div>
+                                            <input type="email" class="form-control" placeholder="Login" [(ngModel)]="account.login" required name="login">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-row form-group">
+                                    <div class="col">
+                                        <label>Senha*</label>
+                                        <input type="password" class="form-control" placeholder="Senha" [(ngModel)]="account.password" required name="password">
+                                    </div>
+                                    <div class="col">
+                                        <label>Confirmar senha</label>
+                                        <input type="password" class="form-control" placeholder="Senha" [(ngModel)]="account.confirm_password" name="confirm_password">
+                                    </div>
+                                </div>
+
+                            </div>
+            
+                            <div class="card-footer">
+                                <button type="submit" class="btn btn-primary">Salvar</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </section>
+</div>
+

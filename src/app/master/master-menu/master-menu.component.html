@@ -1,0 +1,279 @@
+<aside class="main-sidebar sidebar-dark-primary elevation-4 sidebar-no-expand" *ngIf="isLoad">
+    <a routerLink="/home" class="brand-link logo-switch text-sm">
+        <span class="brand-text-xs font-weight-light logo-xs">GD</span>
+        <span class="brand-text-xl font-weight-light logo-xl">Global Dev</span>
+    </a>
+
+    <section class="sidebar sidebar-dark-primary">
+        <nav class="mt-2">
+            <ul class="nav nav-pills flex-column nav-compact nav-sidebar nav-legacy text-sm sidebar-no-expand nav-child-indent nav-flat" data-widget="treeview" role="menu">
+                <li class="nav-item has-treeview" *ngIf="currentPermission?.User.View || currentPermission?.User.Edit || currentPermission?.User.Insert || currentPermission?.User.All">
+                    <a href="#" class="nav-link">
+                        <i class="fas fa-user nav-icon"></i>
+                        <p>Funcionários</p>
+                    </a>
+                    <ul class="nav nav-treeview">
+                        <li class="nav-item" *ngIf="currentPermission?.User.Insert || currentPermission?.User.All">
+                            <a routerLink="/accounts/create" class="nav-link">
+                                <i class="fas fa-plus nav-icon"></i>
+                                <p>Criar novo</p>
+                            </a>
+                        </li>
+                        <li class="nav-item" *ngIf="currentPermission?.User.View || currentPermission?.User.Edit || currentPermission?.User.Insert || currentPermission?.User.All">
+                            <a routerLink="/accounts" class="nav-link">
+                                <i class="fas fa-search nav-icon"></i>
+                                <p>Consultar</p>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+                <li class="nav-item has-treeview" *ngIf="currentPermission?.Company.All">
+                    <a href="#" class="nav-link">
+                        <i class="fas fa-home nav-icon"></i>
+                        <p>Empresa</p>
+                    </a>
+                    <ul class="nav nav-treeview" *ngIf="currentPermission?.Company.All">
+                        <li class="nav-item">
+                            <a routerLink="/company/create" class="nav-link">
+                                <i class="fas fa-plus nav-icon"></i>
+                                <p>Criar novo</p>
+                            </a>
+                        </li>
+                        <li class="nav-item" *ngIf="currentPermission?.Company.All">
+                            <a routerLink="/company" class="nav-link">
+                                <i class="fas fa-search nav-icon"></i>
+                                <p>Consultar</p>
+                            </a>
+                        </li>
+                        <li class="nav-item" *ngIf="currentPermission?.Company.All">
+                            <a routerLink="/company/link" class="nav-link">
+                                <i class="fas fa-search nav-icon"></i>
+                                <p>Vincular funcionários</p>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+                <li class="nav-item has-treeview" >
+                    <a href="#" class="nav-link">
+                        <i class="fas fa-headphones nav-icon"></i>
+                        <p>Ramais</p>
+                    </a>
+                    <ul class="nav nav-treeview">
+                        <li class="nav-item" >
+                            <a routerLink="/extension/create" class="nav-link">
+                                <i class="fas fa-plus nav-icon"></i>
+                                <p>Criar novo</p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a routerLink="/extension" class="nav-link">
+                                <i class="fas fa-search nav-icon"></i>
+                                <p>Consultar</p>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+                <li class="nav-item has-treeview" *ngIf="currentPermission?.Permission.View || currentPermission?.Permission.Edit || currentPermission?.Permission.Insert || currentPermission?.Permission.All">
+                    <a href="#" class="nav-link">
+                        <i class="fas fa-user-shield nav-icon"></i>
+                        <p>Permissões</p>
+                    </a>
+                    <ul class="nav nav-treeview">
+                        <li class="nav-item" *ngIf="currentPermission?.Permission.All || currentPermission?.Permission.Insert">
+                            <a routerLink="/permission/create" class="nav-link">
+                                <i class="fas fa-plus nav-icon"></i>
+                                <p>Criar novo</p>
+                            </a>
+                        </li>
+                        <li class="nav-item" *ngIf="currentPermission?.Permission.All || currentPermission?.Permission.View || currentPermission?.Permission.Edit">
+                            <a routerLink="/permission" class="nav-link">
+                                <i class="fas fa-search nav-icon"></i>
+                                <p>Consultar</p>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+                <li class="nav-item has-treeview">
+                    <a href="#" class="nav-link">
+                        <i class="fas fa-network-wired nav-icon"></i>
+                        <p>Troncos</p>
+                    </a>
+                    <ul class="nav nav-treeview">
+                        <li class="nav-item">
+                            <a routerLink="/trunk/create" class="nav-link">
+                                <i class="fas fa-plus nav-icon"></i>
+                                <p>Criar novo</p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a routerLink="/trunk" class="nav-link">
+                                <i class="fas fa-search nav-icon"></i>
+                                <p>Consultar</p>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+                <li class="nav-item has-treeview">
+                    <a href="#" class="nav-link">
+                        <i class="fas fa-voicemail nav-icon"></i>
+                        <p>Caixa Postal</p>
+                    </a>
+                    <ul class="nav nav-treeview">
+                        <li class="nav-item">
+                            <a routerLink="/mailboxes/create" class="nav-link">
+                                <i class="fas fa-plus nav-icon"></i>
+                                <p>Criar novo</p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a routerLink="/mailboxes" class="nav-link">
+                                <i class="fas fa-search nav-icon"></i>
+                                <p>Consultar</p>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+                <li class="nav-item has-treeview">
+                    <a href="#" class="nav-link">
+                        <i class="fas fa-ban nav-icon"></i>
+                        <p>Blacklist</p>
+                    </a>
+                    <ul class="nav nav-treeview">
+                        <li class="nav-item">
+                            <a routerLink="/blacklist/create" class="nav-link">
+                                <i class="fas fa-plus nav-icon"></i>
+                                <p>Criar novo</p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a routerLink="/blacklist" class="nav-link">
+                                <i class="fas fa-search nav-icon"></i>
+                                <p>Consultar</p>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+                <li class="nav-item has-treeview">
+                    <a href="#" class="nav-link">
+                        <i class="fas fa-network-wired nav-icon"></i>
+                        <p>Conferências</p>
+                    </a>
+                    <ul class="nav nav-treeview">
+                        <li class="nav-item">
+                            <a routerLink="/conferences/create" class="nav-link">
+                                <i class="fas fa-plus nav-icon"></i>
+                                <p>Criar novo</p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a routerLink="/conferences" class="nav-link">
+                                <i class="fas fa-search nav-icon"></i>
+                                <p>Consultar</p>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+                <li class="nav-item has-treeview">
+                    <a href="#" class="nav-link">
+                        <i class="fas fa-network-wired nav-icon"></i>
+                        <p>Boss Secretary</p>
+                    </a>
+                    <ul class="nav nav-treeview">
+                        <li class="nav-item">
+                            <a routerLink="/bosssecretary/create" class="nav-link">
+                                <i class="fas fa-plus nav-icon"></i>
+                                <p>Criar novo</p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a routerLink="/bosssecretary" class="nav-link">
+                                <i class="fas fa-search nav-icon"></i>
+                                <p>Consultar</p>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+                <li class="nav-item has-treeview">
+                    <a href="#" class="nav-link">
+                        <i class="fas fa-network-wired nav-icon"></i>
+                        <p>Centro de Custo</p>
+                    </a>
+                    <ul class="nav nav-treeview">
+                        <li class="nav-item">
+                            <a routerLink="/costcenter/create" class="nav-link">
+                                <i class="fas fa-plus nav-icon"></i>
+                                <p>Criar novo</p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a routerLink="/costcenter" class="nav-link">
+                                <i class="fas fa-search nav-icon"></i>
+                                <p>Consultar</p>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+                <li class="nav-item has-treeview">
+                    <a href="#" class="nav-link">
+                        <i class="fas fa-network-wired nav-icon"></i>
+                        <p>Função</p>
+                    </a>
+                    <ul class="nav nav-treeview">
+                        <li class="nav-item">
+                            <a routerLink="/role/create" class="nav-link">
+                                <i class="fas fa-plus nav-icon"></i>
+                                <p>Criar novo</p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a routerLink="/role" class="nav-link">
+                                <i class="fas fa-search nav-icon"></i>
+                                <p>Consultar</p>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+                <li class="nav-item has-treeview">
+                    <a href="#" class="nav-link">
+                        <i class="fas fa-network-wired nav-icon"></i>
+                        <p>Ring Groups</p>
+                    </a>
+                    <ul class="nav nav-treeview">
+                        <li class="nav-item">
+                            <a routerLink="/ringgroups/create" class="nav-link">
+                                <i class="fas fa-plus nav-icon"></i>
+                                <p>Criar novo</p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a routerLink="/ringgroups" class="nav-link">
+                                <i class="fas fa-search nav-icon"></i>
+                                <p>Consultar</p>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+                <li class="nav-item has-treeview">
+                    <a href="#" class="nav-link">
+                        <i class="fas fa-network-wired nav-icon"></i>
+                        <p>Módulos</p>
+                    </a>
+                    <ul class="nav nav-treeview">
+                        <li class="nav-item">
+                            <a routerLink="/modules/create" class="nav-link">
+                                <i class="fas fa-plus nav-icon"></i>
+                                <p>Criar novo</p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a routerLink="/modules" class="nav-link">
+                                <i class="fas fa-search nav-icon"></i>
+                                <p>Consultar</p>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+        </nav>
+    </section>
+</aside>

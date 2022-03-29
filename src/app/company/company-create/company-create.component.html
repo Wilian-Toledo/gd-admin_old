@@ -1,0 +1,113 @@
+<div *ngIf="is_load">
+    <section class="content-header">
+        <h1>
+            Criação e alteração de empresa
+        </h1>
+        <nav aria-label="breadcrumb">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a routerLink="/home">Home</a></li>
+                <li class="breadcrumb-item"><a routerLink="/company">Empresa</a></li>
+            </ol>
+        </nav>
+    </section>
+    <section class="content">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="card card-primary">
+                        <form #f="ngForm" (ngSubmit)="save()">
+                            <div class="card-body">
+                                <div class="form-row form-group">
+                                    <div class="col">
+                                        <label>Nome*</label>
+                                        <input type="text" class="form-control" placeholder="Nome completo" [(ngModel)]="company.name" required name="name">
+                                    </div>
+                                    <div class="col">
+                                        <label>Referência*</label>
+                                        <input type="text" class="form-control" placeholder="Referência" [(ngModel)]="company.reference" required name="reference">
+                                    </div>
+                                </div>
+                                <div class="form-row form-group">
+                                    <div class="col">
+                                        <label>Documento</label>
+                                        <input type="text" class="form-control" placeholder="Documento CNPJ" [(ngModel)]="company.document" name="document">
+                                    </div>
+                                    <div class="col">
+                                        <label>Telefone de contato</label>
+                                         <div class="input-group mb-2 mr-sm-2">
+                                            <div class="input-group-prepend">
+                                                <div class="input-group-text"><i class="fas fa-phone"></i></div>
+                                            </div>
+                                            <input type="text" mask="(00)00000-0000" [showMaskTyped]="true" class="form-control" placeholder="Celular" [(ngModel)]="company.phone" name="phone">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-row form-group">
+                                    <div class="col">
+                                        <label>Descrição</label>
+                                        <input type="text" class="form-control" placeholder="Descrição" [(ngModel)]="company.description" required name="description">
+                                    </div>
+                                </div>
+                                <div class="form-row form-group">
+                                    <div class="col">
+                                        <label>Resumo</label>
+                                        <input type="text" class="form-control" placeholder="Sub título" [(ngModel)]="company.sub_title" required name="subtitle">
+                                    </div>
+                                </div>
+                                <div class="form-row form-group">
+                                    <div class="col">
+                                        <label>Logo do empresa</label>
+                                        <input type="text" class="form-control" placeholder="Endereço da imagem. Ex.: https://www.global.dev/logo.png" required name="logo">
+                                    </div>
+                                </div>
+                                <div class="form-row form-group">
+                                    <div class="col-2">
+                                        <label>CEP</label>
+                                        <div class="input-group mb-2 mr-sm-2">
+                                            <input type="text" class="form-control" placeholder="Cep" [(ngModel)]="company.address.zip_code" required name="address_zip_code">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-row form-group">
+                                    <div class="col-8">
+                                        <label>Endereço</label>
+                                        <input type="text" class="form-control" placeholder="Endereço Ex. Rua..." [(ngModel)]="company.address.street" required name="address_street">
+                                    </div>
+                                    <div class="col-2">
+                                        <label>Número</label>
+                                        <input type="text" class="form-control" placeholder="Número" [(ngModel)]="company.address.number" required name="address_number">
+                                    </div>
+                                    <div class="col-2">
+                                        <label>Complemento</label>
+                                        <input type="text" class="form-control" placeholder="Complemento" [(ngModel)]="company.address.complement" required name="address_complement">
+                                    </div>
+                                </div>
+                                <div class="form-row form-group">
+                                    <div class="col-4">
+                                        <label>Bairro</label>
+                                        <input type="text" class="form-control" placeholder="Bairro" [(ngModel)]="company.address.district" required name="address_distict">
+                                    </div>
+                                    <div class="col-4">
+                                        <label>Cidade</label>
+                                        <input type="text" class="form-control" placeholder="Cidade" [(ngModel)]="company.address.city" required name="address_city">
+                                    </div>
+                                    <div class="col-4">
+                                        <label>Estado</label>
+                                        <input type="text" class="form-control" placeholder="Estado" [(ngModel)]="company.address.state" required name="address_state">
+                                    </div>
+                                </div>
+                                
+                            </div>
+            
+                            <div class="card-footer">
+                                <button type="submit" class="btn btn-primary">Salvar</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </section>
+</div>
+

@@ -1,0 +1,64 @@
+<div>
+    <section class="content-header">
+        <h1>
+            Pesquisar permissões para o empresa
+        </h1>
+        <nav aria-label="breadcrumb">
+            <ol class="breadcrumb">
+              <li class="breadcrumb-item"><a routerLink="/home">Home</a></li>
+              <li class="breadcrumb-item active" aria-current="page">Permissão</li>
+            </ol>
+          </nav>
+    </section>
+    <section class="content">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="card card-primary">
+                        <div class="row" *ngIf="list?.length > 0">
+                            <div class="col-12">
+                                <div class="card">
+                                    <div class="card-header">
+                                        <h3 class="card-title">Permissões encontrados para o empresa</h3>
+                                    </div>
+                                    <div class="card-body table-responsive p-0">
+                                      <table class="table table-hover table-to-mobile">
+                                        <thead>
+                                          <tr>
+                                            <th>ID</th>
+                                            <th>ID do funcionário</th>
+                                            <th>Nome</th>
+                                            <th>Ações</th>
+                                          </tr>
+                                        </thead>
+                                        <tbody>
+                                          <tr *ngFor="let item of list">
+                                            <td>{{ item.id }}</td>
+                                            <td><span class="text-blue">{{ item.employee.id }}</span></td>
+                                            <td><span class="text-green">{{ item.employee.login }}</span></td>
+                                            <td>
+                                                <a [routerLink]="['/permission', item.id]"><i class="fas fa-eye"></i></a>
+                                                <i></i>
+                                                <i></i>
+                                            </td>
+                                          </tr>
+                                        </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row" *ngIf="list?.length == 0">
+                            <div class="col-sm-12">
+                                <p class="text-center">
+                                    Nenhuma permissão encontrada.
+                                    <br>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</div>
