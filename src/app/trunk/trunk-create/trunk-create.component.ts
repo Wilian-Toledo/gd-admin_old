@@ -11,6 +11,7 @@ import { TrunkService } from '../trunk.service';
   styleUrls: ['./trunk-create.component.css']
 })
 export class TrunkCreateComponent implements OnInit {
+  is_load: boolean = false;
 
   trunk: any = {};
 
@@ -22,7 +23,21 @@ export class TrunkCreateComponent implements OnInit {
     private companyService: CompanyService,
     private jwt:JwtauthService
   ) {
+    this.load();
    }
+
+   load() {
+      if (this.routeActive.snapshot.params.id) {
+          this.trunkService.get(this.routeActive.snapshot.params.id).subscribe((x) => {
+              this.trunk = x;
+              this.is_load = true;
+          });
+      }
+      else
+      {
+          this.is_load = true;
+      }
+    } 
 
   ngOnInit(): void {
   }

@@ -9,7 +9,8 @@ const routes: Routes = [
         path: '', component: ModulesComponent,
         children: [
             { path: '', component: ModulesListComponent },
-            { path: 'create', component: ModulesCreateComponent },                 
+            { path: ':id', component: ModulesCreateComponent },
+            { path: 'create', component: ModulesCreateComponent },
         ]
     }];
 

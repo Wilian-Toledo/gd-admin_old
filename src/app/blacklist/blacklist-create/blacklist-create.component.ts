@@ -11,6 +11,7 @@ import { BlacklistService } from '../blacklist.service';
   styleUrls: ['./blacklist-create.component.css']
 })
 export class BlacklistCreateComponent implements OnInit {
+  is_load: boolean = false;
 
   blacklist: any = {};
   constructor(
@@ -21,6 +22,20 @@ export class BlacklistCreateComponent implements OnInit {
     private companyService: CompanyService,
     private jwt:JwtauthService
   ) {
+    this.load();
+   }
+
+   load(){
+    if (this.routeActive.snapshot.params.id) {
+      this.blacklistService.get(this.routeActive.snapshot.params.id).subscribe((x) => {
+          this.blacklist = x;
+          this.is_load = true;
+      });
+  }
+  else
+  {
+      this.is_load = true;
+  }
    }
 
   ngOnInit(): void {

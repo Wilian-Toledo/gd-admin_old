@@ -35,7 +35,7 @@ export class ConferencesListComponent implements OnInit {
   {
     this.conferencesService.all().subscribe(x=> {
       this.conferences = x;
-      console.log(x)
+      
     });
   }
 }

@@ -11,6 +11,7 @@ import { MailboxesService } from '../mailboxes.service';
   styleUrls: ['./mailboxes-create.component.css']
 })
 export class MailboxesCreateComponent implements OnInit {
+  is_load: boolean = false;
 
   mailboxes: any = {};
   constructor(
@@ -21,7 +22,21 @@ export class MailboxesCreateComponent implements OnInit {
     private companyService: CompanyService,
     private jwt:JwtauthService
   ) {
+    this.load();
    }
+
+   load() {
+    if (this.routeActive.snapshot.params.id) {
+        this.mailboxesService.get(this.routeActive.snapshot.params.id).subscribe((x) => {
+            this.mailboxes = x;
+            this.is_load = true;
+        });
+    }
+    else
+    {
+        this.is_load = true;
+    }
+}
 
   ngOnInit(): void {
   }

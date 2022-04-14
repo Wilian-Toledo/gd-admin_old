@@ -1,4 +1,4 @@
-<div>
+<div *ngIf="is_load">
     <section class="content-header">
         <h1>
             Módulos
@@ -36,9 +36,9 @@
                                             </div>
                                             <div class="col">
                                                 <label>Id do Módulo: </label>
-                                                <input type="search"  class="form-control" [(ngModel)]="modules.modulesid" width="100px" required name="modulesid" />
+                                                <input type="search"  class="form-control" [(ngModel)]="modules.modules_id" width="100px" required name="modulesid" />
                                             </div>
-                                        </div>                 
+                                        </div>
                                     </div>
                                 </div>
                             </div>
