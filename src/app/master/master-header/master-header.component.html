@@ -118,11 +118,11 @@
         <a href="#" class="dropdown-item dropdown-footer">See All Notifications</a>
       </div>
     </li> -->
-    <li class="nav-item">
+    <!--<li class="nav-item">
       <select class="form-control" [(ngModel)]="company" required name="list_companies" (change)="selectCompany()">
         <option *ngFor="let item of companies;" [value]="item.id">{{item.name}} - {{ item.document || "Sem documento"}}</option>
       </select>
-    </li>
+    </li>-->
 
     <li class="nav-item">
       <a class="nav-link" [routerLink]="['/accounts', account, 'change-password']" ><i class="fas fa-key"></i></a>
